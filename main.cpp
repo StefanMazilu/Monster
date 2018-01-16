@@ -19,6 +19,7 @@ int main()
     m_adc.Attack(&mPC_adc);
     m_adc.Attack(&mPC_adc);
     m_adc.Attack(&mPC_adc);
+    m_adc.Attack(&mPC_adc);
 
     return 0;
 }
