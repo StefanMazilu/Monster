@@ -8,7 +8,7 @@ Monster::Monster()
 {
 }
 
-Monster::Monster(char name[], bool armPen, int armour, int damage, bool doubleHit, int exp, int health)
+Monster::Monster(char name[], bool armPen, int armour, int damage, bool doubleHit, int exp, Health health)
 {
     SetName(name);
     SetArmPen(armPen);

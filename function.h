@@ -1,5 +1,5 @@
 #pragma once
-
+typedef int Health;
 class Monster
 {
     char _name[10];
@@ -8,11 +8,11 @@ class Monster
     int _damage;
     bool _doubleHit;
     int _exp;
-    int _health;
+    Health _health;
 
 public:
     Monster();                                                              // Constructor
-    Monster(char [], bool, int, int, bool, int, int);   // Constructor cu parametrii
+    Monster(char [], bool, int, int, bool, int, Health);   // Constructor cu parametrii
 
     void SetName(char []);
     void SetArmPen(int);

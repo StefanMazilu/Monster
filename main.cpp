@@ -6,7 +6,7 @@ using namespace std;
 int main()
 {
     //Monsters stats are : Name, aoe, armour, damage, doubleHit, exp and health
-    Monster m_adc("Vayne", 0, 5, 20, 0, 0, 100);                     //
+    Monster m_adc("Vayne", 0, 5, 20, 0, 0, Health(100));                     //
     Monster m_tank("Malphite", 0, 15, 7, 0, 0, 150);              //  - Player
     Monster m_doubleHit("MasterYi", 0, 5, 15, 1, 0, 100);    //
 
