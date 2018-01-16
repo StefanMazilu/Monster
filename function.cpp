@@ -2,73 +2,90 @@
 #include <iostream>
 
 #include "function.h"
+using namespace std;
 
 Monster::Monster()
 {
-    experience_ = 0;
-
-    std::cout<<"Default constructor\n";
 }
 
-Monster::Monster(const Monster&)
+Monster::Monster(char name[], bool armPen, int armour, int damage, bool doubleHit, int exp, int health)
 {
-    std::cout<<"Copy constructor\n";
-}
-
-Monster::Monster(char name[], int damage, int health)
-{
-    experience_ = 0;
-
     SetName(name);
-
+    SetArmPen(armPen);
+    SetArmour(armour);
     SetDamage(damage);
-
+    SetDoubleHit(doubleHit);
+    SetExp(exp);
     SetHealth(health);
 }
 
 void Monster::SetName(char name[])
 {
-    strcpy(name_, name);
+    strcpy(_name, name);
+}
+
+void Monster::SetArmPen(int armPen)
+{
+    _armPen = armPen;
+}
+
+void Monster::SetArmour(int armour)
+{
+    _armour = armour;
 }
 
 void Monster::SetDamage(int damage)
 {
-    damage_ = damage;
+    _damage = damage;
+}
+
+void Monster::SetDoubleHit(bool doubleHit)
+{
+    _doubleHit = doubleHit;
+}
+
+void Monster::SetExp(int exp)
+{
+    _exp = exp;
 }
 
 void Monster::SetHealth(int health)
 {
-    health_ = health;
+    _health = health;
 }
 
 void Monster::Attack(Monster* monster)
 {
-    monster->Defend(damage_);
+    int damageDealt = monster->Defend(_damage);
 
     if(monster->IsDead())
     {
-        experience_ += 3;
+        LevelUp();
     }
 
-    std::cout<<name_<<" attacked for "<<damage_<<" damage!\n";
+    cout<<_name<<" attacked for "<< damageDealt <<" damage!\n";
 }
 
-void Monster::Defend(int damage)
+int Monster::Defend(int damage)
 {
-    health_ -= damage;
+    int effectiveDamage = damage - _armour;
+    _health -= effectiveDamage;
+    return effectiveDamage;
 }
 
 bool Monster::IsDead()
 {
-    return health_ <= 0;
+    return _health <= 0;
 }
 
-Monster::operator int()
+void Monster::LevelUp()
 {
-    return damage_;
-}
-
-Monster& Monster::operator =(const Monster&)
-{
-    std::cout<<"Assignment operator\n";
+    _exp += 4;
+    _armour += _exp;
+    _damage +=  (_exp * 2);
+    _health +=  (_exp * 10);
+    if(_armPen > 0)
+    {
+        _armPen += 2;
+    }
 }

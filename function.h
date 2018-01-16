@@ -2,34 +2,28 @@
 
 class Monster
 {
-    char name_[16];
-
-    int damage_;
-
-    int health_;
-
-    int experience_;
+    char _name[10];
+    int _armPen;
+    int _armour;
+    int _damage;
+    bool _doubleHit;
+    int _exp;
+    int _health;
 
 public:
-    Monster();
-
-    Monster(char [], int, int);
-
-    Monster(const Monster&);
+    Monster();                                                              // Constructor
+    Monster(char [], bool, int, int, bool, int, int);   // Constructor cu parametrii
 
     void SetName(char []);
-
+    void SetArmPen(int);
+    void SetArmour(int);
     void SetDamage(int);
-
+    void SetDoubleHit(bool);
+    void SetExp(int);
     void SetHealth(int);
 
     void Attack(Monster*);
-
-    void Defend(int);
-
+    int Defend(int);
     bool IsDead();
-
-    operator int();
-
-    Monster& operator =(const Monster&);
+    void LevelUp();
 };
